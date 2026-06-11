@@ -8,7 +8,7 @@ import { UserDataProvider } from './context/UserDataContext';
 import { FloatingChat } from './components/FloatingChat';
 
 function AppContent() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
   const [currentPage, setCurrentPage] = useState<'landing' | 'login' | 'dashboard'>('landing');
 
   const handleNavigate = (page: 'landing' | 'login' | 'dashboard') => {
@@ -17,10 +17,25 @@ function AppContent() {
 
   // Move the authentication check to useEffect to avoid render issues
   useEffect(() => {
-    if (!isAuthenticated && currentPage === 'dashboard') {
-      setCurrentPage('login');
+    if (!isLoading) {
+      if (!isAuthenticated && currentPage === 'dashboard') {
+        setCurrentPage('login');
+      } else if (isAuthenticated && currentPage === 'login') {
+        setCurrentPage('dashboard');
+      }
     }
-  }, [isAuthenticated, currentPage]);
+  }, [isAuthenticated, isLoading, currentPage]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="flex flex-col items-center space-y-4">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
+          <p className="text-gray-500 font-medium animate-pulse">Loading Health Advisor...</p>
+        </div>
+      </div>
+    );
+  }
 
   const renderCurrentPage = () => {
     switch (currentPage) {

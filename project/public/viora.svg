@@ -1,0 +1,12 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Symmetrical wings/leaves in brand navy blue -->
+  <path
+    d="M50 88C42 88 30 72 26 52C22 32 26 18 35 18C43 18 47 32 50 42C53 32 57 18 65 18C74 18 78 32 74 52C70 72 58 88 50 88Z"
+    fill="#102A5C"
+  />
+  <!-- Rounded medical cross in white -->
+  <rect x="47" y="58" width="6" height="16" rx="2" fill="white" />
+  <rect x="42" y="63" width="16" height="6" rx="2" fill="white" />
+  <!-- Brand turquoise dot on top -->
+  <circle cx="50" cy="22" r="6" fill="#4EC3C2" />
+</svg>

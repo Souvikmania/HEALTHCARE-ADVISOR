@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, User, Bot } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { chatApi } from '../services/api';
 
 interface Message {
     id: string;
@@ -14,7 +15,7 @@ export const FloatingChat: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([
         {
             id: '1',
-            text: 'Hello! I am your AI Health Assistant. How can I help you today?',
+            text: 'Hello! I am your Viora AI Assistant. How can I help you today?',
             sender: 'bot',
             timestamp: new Date()
         }
@@ -41,21 +42,38 @@ export const FloatingChat: React.FC = () => {
             timestamp: new Date()
         };
 
+        // Capture user query and copy of messages for history before clearing input
+        const userQuery = input.trim();
+        const chatHistory = messages.map(m => ({ text: m.text, sender: m.sender }));
+
         setMessages(prev => [...prev, userMessage]);
         setInput('');
         setIsTyping(true);
 
-        // Simulate AI response
-        setTimeout(() => {
-            const botMessage: Message = {
-                id: (Date.now() + 1).toString(),
-                text: 'Thank you for sharing. Based on what you said, I recommend using our Symptom Checker for a more detailed analysis, or you can book an appointment directly from your dashboard.',
-                sender: 'bot',
-                timestamp: new Date()
-            };
-            setMessages(prev => [...prev, botMessage]);
-            setIsTyping(false);
-        }, 1500);
+        // Fetch response from backend chat API
+        chatApi.sendMessage(userQuery, chatHistory)
+            .then(data => {
+                const botMessage: Message = {
+                    id: Date.now().toString(),
+                    text: data.reply,
+                    sender: 'bot',
+                    timestamp: new Date()
+                };
+                setMessages(prev => [...prev, botMessage]);
+            })
+            .catch(err => {
+                console.error('Chat API error:', err);
+                const botMessage: Message = {
+                    id: Date.now().toString(),
+                    text: 'Sorry, I am having trouble connecting to the medical advisor server right now. Please try again later.',
+                    sender: 'bot',
+                    timestamp: new Date()
+                };
+                setMessages(prev => [...prev, botMessage]);
+            })
+            .finally(() => {
+                setIsTyping(false);
+            });
     };
 
     return (
@@ -93,7 +111,7 @@ export const FloatingChat: React.FC = () => {
                                     <Bot className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold text-sm">Health Assistant AI</h3>
+                                    <h3 className="font-semibold text-sm">Viora AI Assistant</h3>
                                     <div className="flex items-center text-xs text-blue-100">
                                         <span className="w-2 h-2 rounded-full bg-green-400 mr-1.5" />
                                         Online

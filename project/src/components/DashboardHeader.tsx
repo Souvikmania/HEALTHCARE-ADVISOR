@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { DashboardView } from '../pages/Dashboard';
+import { Logo } from './Logo';
 
 interface DashboardHeaderProps {
   currentView: DashboardView;
@@ -41,11 +42,8 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
     <header className="bg-white shadow-lg border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
-              <Heart className="w-6 h-6 text-white" />
-            </div>
-            <span className="ml-3 text-2xl font-bold text-gray-900">HealthAdviser</span>
+          <div className="flex items-center cursor-pointer" onClick={() => onNavigate('landing')}>
+            <Logo iconClassName="w-9 h-9" textClassName="text-xl" />
           </div>
           
           <div className="flex items-center space-x-4">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
+import { Logo } from '../components/Logo';
 import {
   Heart,
   Shield,
@@ -53,7 +54,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
     {
       name: 'Dr. Sarah Johnson',
       role: 'Chief Medical Officer',
-      content: 'HealthAdviser has revolutionized how we approach preventive healthcare. The AI recommendations are remarkably accurate.',
+      content: 'Viora has revolutionized how we approach preventive healthcare. The AI recommendations are remarkably accurate.',
       rating: 5
     },
     {
@@ -72,12 +73,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
           <div className="px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center cursor-pointer group" onClick={() => onNavigate('landing')}>
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                  <Heart className="w-6 h-6 text-white" />
-                </div>
-                <span className="ml-3 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700 tracking-tight">
-                  HealthAdviser
-                </span>
+                <Logo iconClassName="w-10 h-10 transition-all duration-300 group-hover:scale-105" textClassName="text-2xl group-hover:text-blue-600 transition-colors" />
               </div>
 
               <div className="hidden md:flex items-center space-x-8">
@@ -141,16 +137,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="space-y-6"
               >
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold mb-2 shadow-sm">
-                  <span className="flex w-2 h-2 rounded-full bg-blue-600 mr-2 animate-pulse"></span>
-                  AI-Powered Healthcare
-                </div>
-
                 <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-gray-900 leading-tight">
                   Your Premium
                   <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500">
-                    Health Advisor
+                  <span className="text-[#102A5C]">
+                    Viora
                   </span>
                 </h1>
 
@@ -393,7 +384,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Email Support</h3>
               <p className="text-gray-600 mb-4">Get detailed responses within 2 hours</p>
-              <p className="text-blue-600 font-semibold">support@healthadviser.com</p>
+              <p className="text-blue-600 font-semibold">support@viora.com</p>
             </div>
 
             <div className="text-center">
@@ -415,7 +406,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
             Ready to Transform Your Health?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of users who trust HealthAdviser for their healthcare needs.
+            Join thousands of users who trust Viora for their healthcare needs.
           </p>
           <button
             onClick={() => onNavigate('login')}
@@ -432,10 +423,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <Heart className="w-5 h-5 text-white" />
-                </div>
-                <span className="ml-2 text-xl font-bold">HealthAdviser</span>
+                <Logo iconClassName="w-8 h-8" textClassName="text-xl" />
               </div>
               <p className="text-gray-400">
                 Empowering individuals with AI-driven healthcare insights for better health outcomes.
@@ -474,7 +462,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 HealthAdviser. All rights reserved.</p>
+            <p>&copy; 2026 Viora. All rights reserved.</p>
           </div>
         </div>
       </footer>

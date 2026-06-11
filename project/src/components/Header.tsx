@@ -9,6 +9,7 @@ import {
   BookOpen, 
   Phone 
 } from 'lucide-react';
+import { Logo } from './Logo';
 
 interface HeaderProps {
   activeTab: NavigationItem;
@@ -30,12 +31,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
     <header className="bg-white shadow-lg border-b-4 border-blue-500">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
-              <Heart className="w-6 h-6 text-white" />
-            </div>
-            <h1 className="text-2xl font-bold text-gray-800">HealthAdviser</h1>
-          </div>
+          <Logo iconClassName="w-9 h-9" textClassName="text-xl" />
         </div>
         
         <nav className="pb-4">

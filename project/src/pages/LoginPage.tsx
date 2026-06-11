@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Heart, Eye, EyeOff, Mail, Lock, User, ArrowLeft } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { Logo } from '../components/Logo';
 
 interface LoginPageProps {
   onNavigate: (page: 'landing' | 'login' | 'dashboard') => void;
@@ -77,8 +78,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
         <div className="bg-white rounded-2xl shadow-xl p-8">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Heart className="w-8 h-8 text-white" />
+            <div className="mb-4 flex justify-center">
+              <Logo variant="vertical" iconClassName="w-20 h-20 mb-2" textClassName="text-4xl" taglineClassName="text-[10px] tracking-[0.2em] font-bold text-gray-500 mt-1 uppercase" />
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
               {isLogin ? 'Welcome Back' : 'Create Account'}
@@ -211,8 +212,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
           {/* Demo Credentials */}
           <div className="mt-6 p-4 bg-blue-50 rounded-lg">
             <p className="text-sm text-blue-800 font-medium mb-2">Demo Credentials:</p>
-            <p className="text-sm text-blue-700">
-              Email: demo@healthadviser.com<br />
+            <p className="text-sm text-blue-700 font-mono">
+              Email: demo@viora.com<br />
               Password: demo123
             </p>
           </div>
